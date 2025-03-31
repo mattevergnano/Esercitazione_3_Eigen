@@ -10,7 +10,7 @@ Vector2d elleu(Matrix2d A, Vector2d b){
     Vector2d y = Vector2d::Zero();
     PartialPivLU<Matrix2d> lu(A);
     Matrix2d P = lu.permutationP();
-    Matrix2d L = Matrix2d::Identity(2,2);
+    Matrix2d L = Matrix2d::Identity();
     L.triangularView<StrictlyLower>() = lu.matrixLU();
     Matrix2d U = lu.matrixLU().triangularView<Upper>();
     y = (L.inverse()* P) * b;
